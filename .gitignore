@@ -11,3 +11,13 @@
 /log/*
 !/log/.keep
 /tmp
+erd.pdf
+coverage
+profiles
+profile
+*.sublime-workspace
+production_logs
+.byebug_history
+perf.data
+certificate_data
+.rbenv-vars

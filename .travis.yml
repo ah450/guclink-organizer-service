@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.2.4
+
+before_script:
+  - psql -U postgres -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:migrate
+
+services:
+  - postgresql
+  - redis-server
+addons:
+  postgresql: "9.3"
