@@ -12,3 +12,5 @@ services:
   - redis-server
 addons:
   postgresql: "9.3"
+  code_climate:
+        repo_token: b2c57d120f62ffbe5f986e1094a06cbc4a753f50d74cae1004c2abe8e68da340
