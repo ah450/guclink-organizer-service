@@ -1,3 +1,4 @@
+# Google Cloud Messaging ids
 class GcmOrganizerId < ActiveRecord::Base
   belongs_to :user
   validates :user, :gcm, presence: true
