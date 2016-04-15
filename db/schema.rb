@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326153945) do
+ActiveRecord::Schema.define(version: 20160415190020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gcm_organizer_ids", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "gcm",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "gcm_organizer_ids", ["user_id"], name: "index_gcm_organizer_ids_on_user_id", using: :btree
 
   create_table "reset_tokens", force: :cascade do |t|
     t.integer  "user_id"
@@ -52,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160326153945) do
   add_index "verification_tokens", ["user_id", "token"], name: "index_verification_tokens_on_user_id_and_token", using: :btree
   add_index "verification_tokens", ["user_id"], name: "index_verification_tokens_on_user_id", using: :btree
 
+  add_foreign_key "gcm_organizer_ids", "users"
   add_foreign_key "reset_tokens", "users"
   add_foreign_key "verification_tokens", "users"
 end
