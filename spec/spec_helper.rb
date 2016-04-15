@@ -66,7 +66,7 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
-
+  config.formatter = :documentation
   config.include Request::JsonHelpers
   config.include Request::HeaderHelpers, type: :controller
   config.include RequestSpec::HeaderHelpers, type: :request
