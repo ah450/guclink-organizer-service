@@ -56,8 +56,6 @@ class ScheduleSlot < ActiveRecord::Base
     return [slots, student_data]
   end
 
-  private
-
   def self.process_schedule_day(row, current_day)
     cells = row.xpath('td')
     # First cell is day name
