@@ -6,21 +6,21 @@ class Api::SchedulesController < ApplicationController
   around_filter :wrap_in_transaction, only: [:create]
 
   def create
-    begin
-      guc_username = params.require(:guc_username)
-      guc_password = params.require(:guc_password)
-      slots, student_data = ScheduleSlot.fetch_from_guc(guc_username,
-                                                        guc_password)
-      info = StudentFetchedInfo.from_schedule_data(student_data)
-      info.user = @current_user
-      info.save!
-      slots.each(&:save!)
-      render json: { slots: slots.as_json,
-                     student_info: info.as_json
-      }, status: :created
-    rescue
-      raise GUCServerError
-    end
+    guc_username = params.require(:guc_username)
+    guc_password = params.require(:guc_password)
+    slots, student_data = ScheduleSlot.fetch_from_guc(guc_username,
+                                                      guc_password)
+    StudentFetchedInfo.where(user: @current_user).delete_all
+    info = StudentFetchedInfo.from_schedule_data(student_data)
+    info.user = @current_user
+    info.save!
+    slots.each(&:save!)
+    StudentRegistration.recreate(slots, @current_user)
+    render json: { slots: slots.as_json,
+                   student_info: info.as_json
+    }, status: :created
+  rescue
+    raise GUCServerError
   end
 
   protected

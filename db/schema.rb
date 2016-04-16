@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416202213) do
+ActiveRecord::Schema.define(version: 20160416202705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20160416202213) do
   add_index "student_fetched_infos", ["guc_id_prefix", "guc_id_suffix"], name: "index_student_fetched_infos_on_guc_id_prefix_and_guc_id_suffix", using: :btree
   add_index "student_fetched_infos", ["user_id"], name: "index_student_fetched_infos_on_user_id", using: :btree
 
+  create_table "student_registrations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "schedule_slot_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "student_registrations", ["schedule_slot_id"], name: "index_student_registrations_on_schedule_slot_id", using: :btree
+  add_index "student_registrations", ["user_id"], name: "index_student_registrations_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -107,5 +117,7 @@ ActiveRecord::Schema.define(version: 20160416202213) do
   add_foreign_key "reset_tokens", "users", on_delete: :cascade
   add_foreign_key "schedule_slots", "courses", on_delete: :cascade
   add_foreign_key "student_fetched_infos", "users", on_delete: :cascade
+  add_foreign_key "student_registrations", "schedule_slots", on_delete: :cascade
+  add_foreign_key "student_registrations", "users", on_delete: :cascade
   add_foreign_key "verification_tokens", "users", on_delete: :cascade
 end
