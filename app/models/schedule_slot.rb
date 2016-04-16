@@ -43,7 +43,17 @@ class ScheduleSlot < ActiveRecord::Base
       slots.concat process_schedule_day(row, current_day)
       current_day += 1
     end
-    return slots
+    student_info = html.css('#scdTpLbl font').text.strip
+    data = student_info.split(' ', 2)
+    guc_id = data[0].strip
+    if data.size > 1
+      student_name = data[1].gsub(/[^a-zA-Z0-9 ]/, '').strip
+    end
+    student_data = {
+      name: student_name,
+      guc_id: guc_id
+    }
+    return [slots, student_data]
   end
 
   private
