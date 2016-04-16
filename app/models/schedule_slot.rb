@@ -30,9 +30,7 @@ class ScheduleSlot < ActiveRecord::Base
   validates :tutorial, :lecture, :lab, inclusion: [true, false]
 
   def self.fetch_from_guc(guc_username, guc_password)
-    url = "http://#{guc_username.strip}:#{guc_password.strip}@student.guc.edu.eg/Web/Student/Schedule/GroupSchedule.aspx"
-    html = `curl -s --ntlm #{url}`
-    raise GUCServerError unless $?.exitstatus == 0
+    html = fetch_schedule(guc_username, guc_password)
     html = parse_html(html)
     table = html.css('#scdTbl')
     rows = table.xpath('tr')
@@ -112,5 +110,14 @@ class ScheduleSlot < ActiveRecord::Base
 
   def self.parse_html(html)
     Nokogiri::HTML(html)
+  end
+
+  def self.fetch_schedule(guc_username, guc_password)
+    url = "http://#{guc_username.strip}:#{guc_password.strip}@student.guc.edu.eg/Web/Student/Schedule/GroupSchedule.aspx"
+    io = IO.popen "curl -s --ntlm #{url}"
+    lines = io.readlines
+    io.close
+    raise GUCServerError unless $?.exitstatus == 0
+    lines.join '\n'
   end
 end
