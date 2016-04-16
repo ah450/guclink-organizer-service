@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415191839) do
+ActiveRecord::Schema.define(version: 20160415201453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "courses", ["name"], name: "index_courses_on_name", using: :btree
 
   create_table "gcm_organizer_ids", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,6 +42,22 @@ ActiveRecord::Schema.define(version: 20160415191839) do
 
   add_index "reset_tokens", ["user_id", "token"], name: "index_reset_tokens_on_user_id_and_token", using: :btree
   add_index "reset_tokens", ["user_id"], name: "index_reset_tokens_on_user_id", using: :btree
+
+  create_table "schedule_slots", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "location"
+    t.string   "group"
+    t.string   "name",       null: false
+    t.integer  "day",        null: false
+    t.integer  "slot_num",   null: false
+    t.boolean  "tutorial",   null: false
+    t.boolean  "lecture",    null: false
+    t.boolean  "lab",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "schedule_slots", ["course_id"], name: "index_schedule_slots_on_course_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -63,5 +87,6 @@ ActiveRecord::Schema.define(version: 20160415191839) do
 
   add_foreign_key "gcm_organizer_ids", "users", on_delete: :cascade
   add_foreign_key "reset_tokens", "users", on_delete: :cascade
+  add_foreign_key "schedule_slots", "courses", on_delete: :cascade
   add_foreign_key "verification_tokens", "users", on_delete: :cascade
 end

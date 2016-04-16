@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/ah450/cacheable.git
-  revision: 1be23279f34b61d78eee4c2ff65fb5fdab80aadc
+  revision: 67d7565d3adf6dd6b4588e4123d4a51a1e46596e
   specs:
-    cacheable (0.0.2)
+    cacheable (0.0.3)
       rails (~> 4.2.6)
       redis
       redis-namespace
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/ah450/guclink_controller_concerns.git
-  revision: b65ddc392c05c51d0282ca83268edbbbac814ac1
+  revision: 830d86e6e8bef69b0d4439fd15a0ce421e414449
   specs:
     guclink_controller_concerns (0.0.4)
       jwt
@@ -96,6 +96,7 @@ GEM
     capistrano-thin (1.2.0)
       capistrano (~> 3.0)
       thin (~> 1.6)
+    choice (0.2.0)
     codeclimate-test-reporter (0.5.0)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
@@ -175,6 +176,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.4.6)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     railties (4.2.6)
@@ -221,6 +227,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    ruby-graphviz (1.2.2)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -285,10 +292,12 @@ DEPENDENCIES
   jwt
   jwt_authenticatable!
   kaminari
+  nokogiri
   pg (~> 0.15)
   pry-rails
   rails (= 4.2.6)
   rails-api
+  rails-erd
   redis
   redis-namespace
   redis-rails

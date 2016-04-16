@@ -1,0 +1,451 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML xmlns:o>
+	<HEAD>
+		<title></title>
+		<!--
+##############################################################################
+#						GUC Administration System							 #
+#					 Completely Developed At The GUC						 #
+#			   Proud To Say "100% Egyptian Software Product"				 #
+##############################################################################
+ -->
+		<meta name="GENERATOR" content="GUC Developers Team">
+		<meta name="CODE_LANGUAGE" content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="Author" content="Alfred Raouf - ar@kemety.net">
+		<LINK rel="stylesheet" type="text/css" href="/Web/Include/Css/main.css">
+	</HEAD>
+	<body bottomMargin="0" leftMargin="0" rightMargin="0" topMargin="0" MS_POSITIONING="FlowLayout">
+		<form name="Form1" method="post" action="GroupSchedule.aspx" id="Form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="980406E4" />
+			<P align="center"><span id="scdTpLbl"><b><font face="Arial" size="6">16-4477 - Ahmed Hisham Nasreldin Ismail</font></b></span></P>
+			<P align="center">
+				</P>
+			<table id="notesTbl" bordercolor="#999999" cellspacing="0" cellpadding="0" align="center" border="0" width="400">
+	<tr>
+		<td colspan="2" align="left">
+						<hr width="400">
+						<b>Notes:</b>&nbsp;
+					</td>
+	</tr>
+	<tr>
+		<td width="100%">
+						<br>
+						To View Faculty Time Slots kindly <A href="http://Intranet.guc.edu.eg/External/TempProjects/Schedule_Information.aspx">
+							Click Here</A>
+						<BR>
+						<br>
+					</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="left"><STRONG>Thae&nbsp;attandance of&nbsp;Biweekly Slots:</STRONG>
+						<br>
+						1st Week’s sessions (in the Academic Calendar) will be considered as the Odd 
+						session.
+						<br>
+						<table id="Table1" bordercolor="#999999" cellspacing="0" cellpadding="0" align="center" border="0">
+			<tr>
+				<td width="100">
+									<b>Odd Session:</b>
+								</td>
+				<td bgcolor="#999999" width="150">&nbsp; &nbsp; &nbsp;
+								</td>
+				<td>&nbsp; &nbsp; &nbsp;</td>
+				<td width="100">
+									<b>Even Session:</b>
+								</td>
+				<td bgcolor="#66ccff" width="150">&nbsp; &nbsp; &nbsp;
+								</td>
+			</tr>
+		</table>
+		
+					</td>
+	</tr>
+</table>
+
+			<br>
+			<table id="scdTbl" border="1" cellspacing="0" bordercolor="#999999" cellpadding="0" width="1000" align="center">
+	<tr>
+		<TD width="100" style="HEIGHT: 29px">
+						<P align="center"><FONT size="2" face="Arial, Helvetica, sans-serif"></FONT>&nbsp;</P>
+					</TD>
+		<TD width="180" style="HEIGHT: 29px">
+						<DIV align="center"><FONT size="2" face="Arial, Helvetica, sans-serif" style="Z-INDEX: 0"><FONT size="2" face="Arial, Helvetica, sans-serif">First 
+									Period</FONT></FONT></DIV>
+					</TD>
+		<TD width="180" style="HEIGHT: 29px">
+						<P align="center"><FONT size="2">Second Period</FONT></P>
+					</TD>
+		<TD width="180" style="HEIGHT: 29px">
+						<DIV align="center"><FONT size="2">Third Period</FONT></DIV>
+					</TD>
+		<TD width="180" style="HEIGHT: 29px">
+						<DIV align="center"><FONT size="2" face="Arial, Helvetica, sans-serif">Fourth Period</FONT></DIV>
+					</TD>
+		<TD width="180" style="HEIGHT: 29px">
+						<DIV align="center"><FONT size="2">Fifth Period</FONT></DIV>
+					</TD>
+	</tr>
+	<tr id="Xrw1">
+		<TD valign="middle" width="100" align="center"><STRONG><FONT size="2" face="Arial, Helvetica, sans-serif">Saturday</FONT></STRONG></TD>
+		<TD width="180">
+						<TABLE id="Table3" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR1C1" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR1C1"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table4" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR1C2" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR1C2"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table5" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR1C3" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff">
+			<tr>
+				<TD align="center"><span id="XlblR1C3"><b><font face="Arial">MATH 203 Lecture (EL L05)<br>H17</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table6" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR1C4" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR1C4"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table7" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR1C5" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR1C5"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+	</tr>
+	<tr id="Xrw2">
+		<TD valign="middle" width="100" align="center"><STRONG><FONT size="2" face="Arial, Helvetica, sans-serif">Sunday</FONT></STRONG></TD>
+		<TD width="180">
+						<TABLE id="Table8" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR2C1" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR2C1"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table9" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							
+									<tr>
+										<td width="20"><font face="Arial, Helvetica, sans-serif" size="1">10CSEN T10</font></td>
+										<td width="40"><font face="Arial, Helvetica, sans-serif" size="1">C6.203</font></td>
+										<td background='../../../Images/External/Reports/half.gif' align=center title='Project Management '><font face="Arial, Helvetica, sans-serif" size="1">HUMA 1001
+												Tut
+											</font>
+										</td>
+									</tr>
+								</TABLE>
+						
+					</TD>
+		<TD width="180">
+						<TABLE id="Table10" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR2C3" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff">
+			<tr>
+				<TD align="center"><span id="XlblR2C3"><b><font face="Arial">DMET 1001 Lecture (DMET L01)<br>H9</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table11" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							
+									<tr>
+										<td width="20"><font face="Arial, Helvetica, sans-serif" size="1">6MCTR 4G T60</font></td>
+										<td width="40"><font face="Arial, Helvetica, sans-serif" size="1">C2.211</font></td>
+										<td background='../../../Images/External/Reports/half.gif' align=center title='Basic German 4'><font face="Arial, Helvetica, sans-serif" size="1">DE 404
+												Tut
+											</font>
+										</td>
+									</tr>
+								</TABLE>
+						
+					</TD>
+		<TD width="180">
+						<TABLE id="Table12" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							
+									<tr>
+										<td width="20"><font face="Arial, Helvetica, sans-serif" size="1">6MCTR 4G T60</font></td>
+										<td width="40"><font face="Arial, Helvetica, sans-serif" size="1">C2.211</font></td>
+										<td background='../../../Images/External/Reports/half.gif' align=center title='Basic German 4'><font face="Arial, Helvetica, sans-serif" size="1">DE 404
+												Tut
+											</font>
+										</td>
+									</tr>
+								</TABLE>
+						
+					</TD>
+	</tr>
+	<tr id="Xrw3">
+		<TD valign="middle" width="100" align="center"><STRONG><FONT size="2" face="Arial, Helvetica, sans-serif">Monday</FONT></STRONG></TD>
+		<TD width="180">
+						<TABLE id="Table13" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							
+									<tr>
+										<td width="20"><font face="Arial, Helvetica, sans-serif" size="1">2E T46</font></td>
+										<td width="40"><font face="Arial, Helvetica, sans-serif" size="1">D4.110</font></td>
+										<td background='../../../Images/External/Reports/half.gif' align=center title='Mathematics I'><font face="Arial, Helvetica, sans-serif" size="1">MATH 203
+												Tut
+											</font>
+										</td>
+									</tr>
+								</TABLE>
+						
+					</TD>
+		<TD width="180">
+						<TABLE id="Table14" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							
+									<tr>
+										<td width="20"><font face="Arial, Helvetica, sans-serif" size="1">2E T46</font></td>
+										<td width="40"><font face="Arial, Helvetica, sans-serif" size="1">C5.105</font></td>
+										<td background='../../../Images/External/Reports/half.gif' align=center title='Mathematics I'><font face="Arial, Helvetica, sans-serif" size="1">MATH 203
+												Tut
+											</font>
+										</td>
+									</tr>
+								</TABLE>
+						
+					</TD>
+		<TD width="180">
+						<TABLE id="Table15" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR3C3" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR3C3"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table16" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR3C4" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR3C4"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table17" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR3C5" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR3C5"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+	</tr>
+	<tr id="Xrw4">
+		<TD valign="middle" width="100" align="center"><STRONG><FONT size="2" face="Arial, Helvetica, sans-serif">Tuesday</FONT></STRONG></TD>
+		<TD width="180">
+						<TABLE id="Table18" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR4C1" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR4C1"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table19" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							
+									<tr>
+										<td width="20"><font face="Arial, Helvetica, sans-serif" size="1">10CSEN EL T01</font></td>
+										<td width="40"><font face="Arial, Helvetica, sans-serif" size="1">C6.104</font></td>
+										<td background='../../../Images/External/Reports/half.gif' align=center title='Image Processing'><font face="Arial, Helvetica, sans-serif" size="1">DMET 1001
+												Tut
+											</font>
+										</td>
+									</tr>
+								</TABLE>
+						
+					</TD>
+		<TD width="180">
+						<TABLE id="Table20" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR4C3" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff">
+			<tr>
+				<TD align="center"><span id="XlblR4C3"><b><font face="Arial">CSEN 1057 Lecture (10DMET EL L01)<br>H9</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table21" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR4C4" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff">
+			<tr>
+				<TD align="center"><span id="XlblR4C4"><b><font face="Arial">DMET 1049 Lecture (Seminar L01)<br>C6.204</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table22" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							
+									<tr>
+										<td width="20"><font face="Arial, Helvetica, sans-serif" size="1">10DMET EL P01</font></td>
+										<td width="40"><font face="Arial, Helvetica, sans-serif" size="1">C3.225</font></td>
+										<td background='../../../Images/External/Reports/half.gif' align=center title='The Semantic IoT'><font face="Arial, Helvetica, sans-serif" size="1">CSEN 1057
+												Lab
+											</font>
+										</td>
+									</tr>
+								</TABLE>
+						
+					</TD>
+	</tr>
+	<tr id="Xrw5">
+		<TD valign="middle" width="100" align="center"><STRONG><FONT size="2" face="Arial, Helvetica, sans-serif">Wednesday</FONT></STRONG></TD>
+		<TD width="180">
+						<TABLE id="Table23" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR5C1" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR5C1"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table24" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR5C2" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff">
+			<tr>
+				<TD align="center"><span id="XlblR5C2"><b><font face="Arial">HUMA 1001 Lecture (DMET L01)<br>H17</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table25" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR5C3" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR5C3"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table26" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR5C4" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR5C4"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table27" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR5C5" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR5C5"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+	</tr>
+	<tr id="Xrw6">
+		<TD valign="middle" width="100" align="center"><STRONG><FONT size="2" face="Arial, Helvetica, sans-serif">Thursday</FONT></STRONG></TD>
+		<TD width="180">
+						<TABLE id="Table28" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR6C1" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff">
+			<tr>
+				<TD align="center"><span id="XlblR6C1"><b><font face="Arial">MATH 203 Lecture (EL L05)<br>H12</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table29" border="1" cellSpacing="0" borderColor="#eeeeee" cellPadding="0" width="100%">
+							</TABLE>
+						<table id="XaltTblR6C2" border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR6C2"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table30" borderColor="#eeeeee" cellSpacing="0" cellPadding="0" width="100%"
+							border="1">
+							</TABLE>
+						<table id="XaltTblR6C3" cellspacing="0" cellpadding="0" width="100%" border="0" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR6C3"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table31" borderColor="#eeeeee" cellSpacing="0" cellPadding="0" width="100%"
+							border="1">
+							</TABLE>
+						<table id="XaltTblR6C4" cellspacing="0" cellpadding="0" width="100%" border="0" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR6C4"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+		<TD width="180">
+						<TABLE id="Table32" borderColor="#eeeeee" cellSpacing="0" cellPadding="0" width="100%"
+							border="1">
+							</TABLE>
+						<table id="XaltTblR6C5" cellspacing="0" cellpadding="0" width="100%" border="0" bgcolor="#99ffff">
+			<tr>
+				<TD align="center"><span id="XlblR6C5"><b><font face="Arial">Free</font></b></span></TD>
+			</tr>
+		</table>
+		
+					</TD>
+	</tr>
+	<tr id="XaltR7">
+		<TD valign="middle" width="100" align="center"><STRONG><FONT size="2" face="Arial, Helvetica, sans-serif"></FONT></STRONG></TD>
+		<TD colspan="6" align="center"><B><FONT face="Arial, Helvetica, sans-serif"></FONT></B></TD>
+	</tr>
+</table>
+
+			<P><STRONG><FONT size="3"><STRONG><STRONG></STRONG>&nbsp;</P>
+			</STRONG></FONT></STRONG></form>
+	</body>
+</HTML>

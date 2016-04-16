@@ -8,6 +8,15 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_reset_tokens_on_user_id            (user_id)
+#  index_reset_tokens_on_user_id_and_token  (user_id,token)
+#
+# Foreign Keys
+#
+#  fk_rails_0164532167  (user_id => users.id)
+#
 
 class ResetToken < ActiveRecord::Base
   belongs_to :user

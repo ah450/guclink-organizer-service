@@ -8,6 +8,15 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_verification_tokens_on_user_id            (user_id)
+#  index_verification_tokens_on_user_id_and_token  (user_id,token)
+#
+# Foreign Keys
+#
+#  fk_rails_63ce44ec5c  (user_id => users.id)
+#
 
 class VerificationToken < ActiveRecord::Base
   belongs_to :user
