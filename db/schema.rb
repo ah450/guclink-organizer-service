@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416195112) do
+ActiveRecord::Schema.define(version: 20160416202213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 20160416195112) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "topic_id",   null: false
   end
 
   add_index "courses", ["name"], name: "index_courses_on_name", using: :btree
+  add_index "courses", ["topic_id"], name: "index_courses_on_topic_id", using: :btree
 
   create_table "gcm_organizer_ids", force: :cascade do |t|
     t.integer  "user_id"
@@ -47,17 +49,21 @@ ActiveRecord::Schema.define(version: 20160416195112) do
     t.integer  "course_id"
     t.string   "location"
     t.string   "group"
-    t.string   "name",       null: false
-    t.integer  "day",        null: false
-    t.integer  "slot_num",   null: false
-    t.boolean  "tutorial",   null: false
-    t.boolean  "lecture",    null: false
-    t.boolean  "lab",        null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",           null: false
+    t.integer  "day",            null: false
+    t.integer  "slot_num",       null: false
+    t.boolean  "tutorial",       null: false
+    t.boolean  "lecture",        null: false
+    t.boolean  "lab",            null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "topic_id",       null: false
+    t.string   "group_topic_id", null: false
   end
 
   add_index "schedule_slots", ["course_id"], name: "index_schedule_slots_on_course_id", using: :btree
+  add_index "schedule_slots", ["group_topic_id"], name: "index_schedule_slots_on_group_topic_id", using: :btree
+  add_index "schedule_slots", ["topic_id"], name: "index_schedule_slots_on_topic_id", using: :btree
 
   create_table "student_fetched_infos", force: :cascade do |t|
     t.integer  "guc_id_prefix", null: false

@@ -2,22 +2,26 @@
 #
 # Table name: schedule_slots
 #
-#  id         :integer          not null, primary key
-#  course_id  :integer
-#  location   :string
-#  group      :string
-#  name       :string           not null
-#  day        :integer          not null
-#  slot_num   :integer          not null
-#  tutorial   :boolean          not null
-#  lecture    :boolean          not null
-#  lab        :boolean          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :integer          not null, primary key
+#  course_id      :integer
+#  location       :string
+#  group          :string
+#  name           :string           not null
+#  day            :integer          not null
+#  slot_num       :integer          not null
+#  tutorial       :boolean          not null
+#  lecture        :boolean          not null
+#  lab            :boolean          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  topic_id       :string           not null
+#  group_topic_id :string           not null
 #
 # Indexes
 #
-#  index_schedule_slots_on_course_id  (course_id)
+#  index_schedule_slots_on_course_id       (course_id)
+#  index_schedule_slots_on_group_topic_id  (group_topic_id)
+#  index_schedule_slots_on_topic_id        (topic_id)
 #
 # Foreign Keys
 #
@@ -28,22 +32,23 @@ class ScheduleSlot < ActiveRecord::Base
   belongs_to :course
   validates :slot_num, :day, :course, :name, presence: true
   validates :tutorial, :lecture, :lab, inclusion: [true, false]
+  before_save :gen_group_topic_id, :gen_topic_id
 
   def as_json(_options={})
-    super(methods: [:topic_id, :group_topic_id]).merge({
+    super.merge({
       course: course.as_json })
   end
 
-  def group_topic_id
-    "#{name}-#{group}".gsub(/[^a-zA-Z0-9\-_.]/, '')
+  def gen_group_topic_id
+    self.group_topic_id = "#{name}-#{group}".gsub(/[^a-zA-Z0-9\-_.]/, '')
   end
 
-  def topic_id
+  def gen_topic_id
     topic = group_topic_id
     topic += '-lab' if lab?
     topic += '-tut' if tutorial?
     topic += '-lecture' if lecture?
-    topic.gsub(/[^a-zA-Z0-9\-_.]/, '')
+    self.topic_id = topic.gsub(/[^a-zA-Z0-9\-_.]/, '')
   end
 
   def self.fetch_from_guc(guc_username, guc_password)
