@@ -22,6 +22,7 @@
 
 class StudentFetchedInfo < ActiveRecord::Base
   belongs_to :user
+  validates :user, uniqueness: true
   validates :guc_id_suffix, :guc_id_prefix, :name, :user, presence: true
   validate :user_is_student
 

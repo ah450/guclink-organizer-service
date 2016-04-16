@@ -6,6 +6,8 @@ RSpec.describe StudentFetchedInfo, type: :model do
   it { should validate_presence_of :name }
   it { should validate_presence_of :user }
   it { should belong_to :user }
+  subject { FactoryGirl.build(:student_fetched_info) }
+  it { should validate_uniqueness_of :user }
 
   context 'guc_id=' do
     it 'parses correctly' do
