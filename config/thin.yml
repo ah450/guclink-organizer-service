@@ -13,3 +13,4 @@ wait: 30
 servers: 1
 daemonize: true
 threaded: true
+threadpool-size: 4
