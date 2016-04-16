@@ -4,6 +4,8 @@ RSpec.describe StudentFetchedInfo, type: :model do
   it { should validate_presence_of :guc_id_suffix }
   it { should validate_presence_of :guc_id_prefix }
   it { should validate_presence_of :name }
+  it { should validate_presence_of :user }
+  it { should belong_to :user }
 
   context 'guc_id=' do
     it 'parses correctly' do

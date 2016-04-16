@@ -15,7 +15,8 @@ Rails.application.config.configurations = {
     too_soon: 'Please calm down',
     bad_request: 'Bad Request',
     internal_server_error: 'Internal Server error',
-    forbidden_super_user_only: 'Must be a super user to perform this action'
+    forbidden_super_user_only: 'Must be a super user to perform this action',
+    guc_error: 'Unable to reach GUC server'
   },
   default_token_exp: 24.hours,
   verification_expiration: 5.hours,
