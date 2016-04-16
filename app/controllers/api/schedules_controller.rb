@@ -15,7 +15,9 @@ class Api::SchedulesController < ApplicationController
       info.user = @current_user
       info.save!
       slots.each(&:save!)
-      render json: slots, status: :created
+      render json: { slots: slots.as_json,
+                     student_info: info.as_json
+      }, status: :created
     rescue
       raise GUCServerError
     end

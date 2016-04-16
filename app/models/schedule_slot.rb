@@ -26,8 +26,25 @@
 
 class ScheduleSlot < ActiveRecord::Base
   belongs_to :course
-  validates :slot_num, :day, :course, presence: true
+  validates :slot_num, :day, :course, :name, presence: true
   validates :tutorial, :lecture, :lab, inclusion: [true, false]
+
+  def as_json(_options={})
+    super(methods: [:topic_id, :group_topic_id]).merge({
+      course: course.as_json })
+  end
+
+  def group_topic_id
+    "#{name}-#{group}".gsub(/[^a-zA-Z0-9\-_.]/, '')
+  end
+
+  def topic_id
+    topic = group_topic_id
+    topic += '-lab' if lab?
+    topic += '-tut' if tutorial?
+    topic += '-lecture' if lecture?
+    topic.gsub(/[^a-zA-Z0-9\-_.]/, '')
+  end
 
   def self.fetch_from_guc(guc_username, guc_password)
     html = fetch_schedule(guc_username, guc_password)

@@ -5,6 +5,7 @@ RSpec.describe ScheduleSlot, type: :model do
   it { should validate_presence_of :course }
   it { should validate_presence_of :slot_num }
   it { should validate_presence_of :day }
+  it { should validate_presence_of :name }
 
   context '.fetch_from_guc' do
     class ScheduleSlot
