@@ -21,3 +21,4 @@ production_logs
 perf.data
 certificate_data
 .rbenv-vars
+*.sublime*
