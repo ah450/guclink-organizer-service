@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0076)http://student.guc.edu.eg/External/Student/ViewStudentSeat/ViewExamSeat.aspx -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>ViewExamSeat</title>
+		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+		<meta content="C#" name="CODE_LANGUAGE">
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<style type="text/css" style="display:none">body
+{
+	background: #ffffff;
+	font-family: Verdana;
+	font-size: 10px;
+}
+
+select
+{
+	font-family: Verdana;
+	font-size: 10px;
+}
+
+input
+{
+	font-family: Verdana;
+	font-size: 10px;
+}
+
+a:link
+{
+	font-family: Verdana;
+	font-size: 10px;
+	color: #000000;
+	text-decoration: underline;
+}
+
+a:visited
+{
+	font-family: Verdana;
+	font-size: 10px;
+	color: #000000;
+}
+
+a:hover 
+{
+	font-family: Verdana;
+	font-size: 10px;
+	color: blue;
+	text-decoration: underline;
+}
+
+table
+{
+	border-color: #cccccc;
+}
+
+td
+{
+	font-family: Verdana;
+	font-size: 10px;
+}
+
+.normal
+{
+	font-family: Verdana;
+	font-size: 10px;
+}
+
+.maintitle
+{
+	font-size: large;
+	font-weight: bold;
+}
+
+.subtitle
+{
+	font-size: larger;
+}
+
+.sectiontitle
+{
+	font-size: smaller;
+	font-style: normal;
+}
+</style>
+
+	<style type="text/css"></style></head>
+	<body bottommargin="0" leftmargin="0" topmargin="0" rightmargin="0" ms_positioning="FlowLayout">
+		<form name="Form1" method="post" action="http://student.guc.edu.eg/External/Student/ViewStudentSeat/ViewExamSeat.aspx" id="Form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQwNjA0Mzg2Mg9kFgICAQ9kFgYCAQ9kFgQCAQ8PFgIeBFRleHQFDkN1cnJlbnQgU2Vhc29uZGQCAw8PFgIfAAUKRXhhbSBTZWF0c2RkAgUPDxYCHwAFJTE2LTQ0NzcgQWhtZWQgSGlzaGFtIE5hc3JlbGRpbiBJc21haWxkZAIHDxYCHgtfIUl0ZW1Db3VudAIIFhACAQ9kFgJmDxUIWU1FVCBEaWdpdGFsIE1lZGlhIEVuZ2luZWVyaW5nIDEwdGggU2VtZXN0ZXIgLSBIVU1BMTAwMSBQcm9qZWN0IE1hbmFnZW1lbnQgIC0gU3ByaW5nIDIwMTYgBk1vbmRheRA3IC0gTWFyY2ggLSAyMDE2CzExOjAwOjAwIEFNCjE6MDA6MDAgUE0FQzcuMDICSTIGTm9ybWFsZAICD2QWAmYPFQhNTUVUIENvbXB1dGVyIFNjaWVuY2UgMTB0aCBTZW1lc3RlciAtIENTRU4xMDU3IFRoZSBTZW1hbnRpYyBJb1QgLSBTcHJpbmcgMjAxNiAJV2VkbmVzZGF5EDkgLSBNYXJjaCAtIDIwMTYKNDowMDowMCBQTQo2OjAwOjAwIFBNBUM3LjAyAkExBk5vcm1hbGQCAw9kFgJmDxUITU1FVCBDb21wdXRlciBTY2llbmNlIDEwdGggU2VtZXN0ZXIgLSBETUVUMTAwMSBJbWFnZSBQcm9jZXNzaW5nIC0gU3ByaW5nIDIwMTYgBk1vbmRheRExNCAtIE1hcmNoIC0gMjAxNgo0OjAwOjAwIFBNCjY6MDA6MDAgUE0DSDE0AkExBk5vcm1hbGQCBA9kFgJmDxUITU1FVCBDb21wdXRlciBTY2llbmNlIDEwdGggU2VtZXN0ZXIgLSBDU0VOMTA1NyBUaGUgU2VtYW50aWMgSW9UIC0gU3ByaW5nIDIwMTYgCFNhdHVyZGF5ETE5IC0gTWFyY2ggLSAyMDE2Cjg6MzA6MDAgQU0LMTA6MzA6MDAgQU0LRXhhbSBoYWxsIDQCQTEGTm9ybWFsZAIFD2QWAmYPFQhNTUVUIENvbXB1dGVyIFNjaWVuY2UgMTB0aCBTZW1lc3RlciAtIERNRVQxMDAxIEltYWdlIFByb2Nlc3NpbmcgLSBTcHJpbmcgMjAxNiAIU2F0dXJkYXkRMTkgLSBNYXJjaCAtIDIwMTYKNDowMDowMCBQTQo2OjAwOjAwIFBNBkIzLjIwNwJBMQZOb3JtYWxkAgYPZBYCZg8VCFlNRVQgRGlnaXRhbCBNZWRpYSBFbmdpbmVlcmluZyAxMHRoIFNlbWVzdGVyIC0gSFVNQTEwMDEgUHJvamVjdCBNYW5hZ2VtZW50ICAtIFNwcmluZyAyMDE2IAZNb25kYXkRMjEgLSBNYXJjaCAtIDIwMTYKODozMDowMCBBTQsxMDozMDowMCBBTQVDNy4wMQNEMTAGTm9ybWFsZAIHD2QWAmYPFQg/RW5naW5lZXJpbmcgMm5kIFNlbWVzdGVyIC0gTUFUSDIwMyBNYXRoZW1hdGljcyBJIC0gU3ByaW5nIDIwMTYgBk1vbmRheRA0IC0gQXByaWwgLSAyMDE2Cjg6MzA6MDAgQU0LMTA6MzA6MDAgQU0CSDQCQjMGTm9ybWFsZAIID2QWAmYPFQg/RW5naW5lZXJpbmcgMm5kIFNlbWVzdGVyIC0gTUFUSDIwMyBNYXRoZW1hdGljcyBJIC0gU3ByaW5nIDIwMTYgCFRodXJzZGF5ETE0IC0gQXByaWwgLSAyMDE2CjQ6MDA6MDAgUE0KNjowMDowMCBQTQNIMTkCQzQGTm9ybWFsZGRXZDIJT5xvf4Vf2+VNhnUJgv9cow==">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8DD80035">
+</div>
+			<table id="Table1" cellspacing="0" cellpadding="0" width="790" border="0">
+				<tbody>
+					<tr>
+						<td colspan="2">
+<table id="Table1" cellspacing="0" cellpadding="0" width="100%" border="0" bgcolor="#cccccc">
+<tbody><tr><td colspan="3" bgcolor="#666666">.</td></tr>
+
+	<tr>
+		<td width="200" rowspan="2"><img title="German University in Cairo" alt="German University in Cairo" src="./ViewExamSeat_files/LogoColor.jpg"></td>
+		<td colspan="2" valign="top" bgcolor="#cccccc"><font style="FONT-WEIGHT: bold; FONT-FAMILY: Verdana" size="5">
+				&nbsp;GUC Administration System</font></td>
+	</tr>
+	<tr>
+		<td width="560" align="center" valign="top" bgcolor="#cccccc"><font style="FONT-WEIGHT: bold; FONT-FAMILY: Verdana" size="4">
+				:.
+				<span id="Header1_sysUsersLbl" class="sysusers" style="color:#404040;">Current Season</span>
+				:: </font><font style="FONT-WEIGHT: bold; FONT-FAMILY: Verdana" size="3">
+				<span id="Header1_fromNameLbl" class="formname" style="color:Gray;">Exam Seats</span>
+			</font>
+		</td>
+		<td width="30" align="center" valign="bottom" bgcolor="#cccccc"><a href="http://student.guc.edu.eg/External/Student/ViewStudentSeat/help.aspx">Help</a></td>
+	</tr>
+
+<tr><td colspan="3" bgcolor="#666666">.</td></tr>
+</tbody></table>
+</td>
+					</tr>
+					<tr height="500">
+						<td valign="top" width="200" bgcolor="#cccccc"><span id="Student1_L_Menu"></span>
+<table id="Table1" border="0" cellspacing="0" cellpadding="0" width="200">
+	<tbody><tr>
+		<td>
+			<p align="center"><a href="http://student.guc.edu.eg/student" target="_top"><b>:. Students Home</b></a></p>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>:. Schedules</b></td>
+	</tr>
+	<tr>
+		<td>
+			<table id="Table2" border="0" cellspacing="0" cellpadding="0" width="200">
+				<tbody><tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/Web/Student/Schedule/GroupSchedule.aspx">View Your 
+							Schedule</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/Web/Student/Schedule/SummerGroupSchedule.aspx">View Your 
+							Summer Schedule</a> (Online)</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td width="190">
+						<!--::  /Web/Student/Schedule/GeneralGroupSchedule.aspx --> <!-- <A href="/Web/Faculty/Schedule/GroupsSchedule.aspx">
+							View All Schedules</A><br> -->
+						:: <a href="http://student.guc.edu.eg/Web/Student/Schedule/GeneralGroupSchedule.aspx">View Group Schedules</a><br>
+					</td>
+				</tr>
+				<!--<TR>
+					<TD width="10"></TD>
+					<TD width="190">:: <A href="/Web/Student/CheckGroup.aspx">View Courses/Groups</A></TD>
+				</TR>-->
+				<tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/External/LSI/EDUMS/CSMS/SearchAcademicScheduled_001.aspx">View 
+							All Course/Staff Schedules</a> <font color="#ff0033">(New)</font></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/External/Student/ViewStudentSeat/ViewExamSeat.aspx">View 
+							Exams Schedule</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 720px" width="720">:: <a href="http://student.guc.edu.eg/Web/Student/Schedule/GroupSchedule.aspx">
+							View Summer Courses </a>(Closed)
+					</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 720px" width="720">:: <a href="http://student.guc.edu.eg/External/Student/CourseGroup/ChangeGroupRequest.aspx">
+							Change Group </a>
+					</td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>:. Performance</b></td>
+	</tr>
+	<tr>
+		<td>
+			<table id="Table5" border="0" cellspacing="0" cellpadding="0" width="200">
+				<tbody><tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/External/LSI/EAACMS/SACMM/ClassAttendance_ViewStudentAttendance.aspx">
+							Check Attendance</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td>:: <a href="http://student.guc.edu.eg/external/student/grade/CheckGrade.aspx">Check Grades</a>&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/external/student/grade/CheckGradePreviousSemester.aspx" style="Z-INDEX: 0">
+							Check Grades [Previous Semester]</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/external/student/grade/Transcript.aspx">Transcript</a></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>:. Bachelor</b></td>
+	</tr>
+	<tr>
+		<td>
+			<table id="Table6" border="0" cellspacing="0" cellpadding="0" width="200">
+				<tbody><tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/External/Thesis/UploadThesisTopicFile.aspx">Upload Thesis 
+							Soft Copy</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/External/Thesis/ChooseThesis.aspx">Choose Engineering 
+							thesis</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/External/Thesis/SelectManagementThesis.aspx">Select 
+							Management Thesis</a></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+	<tr>
+		<td><b>:. Masters</b></td>
+	</tr>
+	<tr>
+		<td>
+			<table id="Table4" border="0" cellspacing="0" cellpadding="0" width="200">
+				<tbody><tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="http://student.guc.edu.eg/External/Thesis/ChooseManagementMasterThesis.aspx">Master’s 
+							Registration</a></td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>:. Services</b></td>
+	</tr>
+	<tr>
+		<td>
+			<table id="Table7" border="0" cellspacing="0" cellpadding="0">
+				<!--<TR>
+					<TD width="10"></TD>
+					<TD style="WIDTH: 100%">:: <A href="/External/Student/Course/DropCourse.aspx">Request 
+							Dropping Courses</A></TD>
+				</TR>-->
+				<!-- <tr>
+					<td width="10"></td>
+					<td width="190">:: <a href="/External/Student/Course/MakeupSignup.aspx">Make Up Sign Up</a></td>
+				</tr> -->
+				<tbody><tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/external/student/staff/EvaluateStaff.aspx">Evaluate 
+							Academics</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/Course/EvaluateCourse.aspx">Evaluate 
+							Courses</a></td>
+				</tr>
+				<!-- <TR>
+					<TD width="10"></TD>
+					<TD width="190">:: <a href="/External/Student/scheduleInterview.aspx">Schedule 
+							Interview</a></TD>
+				</TR> -->
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/Questionnaire/Questionnaire.aspx">Questionnaire</a></td>
+				</tr>
+				<!-- <TR>
+						<TD width="10"></TD>
+						<TD width="190">:: <a href="/External/Student/Course/PostponeExam.aspx">Postpone Exam</a></TD>
+					</TR> -->
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/SummerCoursesRoundRegisteration.aspx">
+							Summer Course Registration</a>(Offline)</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="COLOR: red; WIDTH: 596px" bordercolorlight="red">:: <a href="http://student.guc.edu.eg/External/Student/SummerCoursesStatus.aspx">
+							Summer Course Status</a>(Online)
+					</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="COLOR: red; WIDTH: 596px" bordercolorlight="red">:: <a href="http://student.guc.edu.eg/External/Student/LastMinuteSummerAdding.aspx">
+							Add Summer Course</a>(Offline)
+					</td>
+				</tr>
+				<!-- <TR>
+					<TD width="10"></TD>
+					<TD width="190">:: <a href="/External/Student/CrashCourseReg.aspx">Course Registration</a></TD>
+				</TR>
+				<TR>
+					<TD width="10"></TD>
+					<TD width="190">:: <a href="/External/Student/confirmInternship.aspx">Confirm 
+							Internship</a></TD>
+				</TR> -->
+				<tr>
+					<td style="HEIGHT: 37px" width="10"></td>
+					<td style="HEIGHT: 37px; WIDTH: 596px" bordercolor="maroon">
+						<p style="COLOR: red"><font color="#000000">::</font> <a href="http://student.guc.edu.eg/External/Student/SummerLanguageCoursesRegistration.aspx">
+								Summer Language Courses Registration</a>&nbsp;(Offline)</p>
+					</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/DeclareFacultyV2.aspx">Declare 
+							Engineering&nbsp;New Faculty/Major</a></td>
+				</tr>
+				<tr>
+					<td width="10" style="HEIGHT: 24px"></td>
+					<td style="HEIGHT: 24px; WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/CivilMajorRequest.aspx">
+							Declare Civil Engineering Major</a><font color="#ff3333">(</font><font color="#ff0033">New)</font></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 100%">:: <a href="http://student.guc.edu.eg/External/Student/ManageFacultyMajor.aspx">Change 
+							Current Faculty/Major</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/Reservation/Default.aspx">Reservation 
+							System</a></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/ManagementStudentMajorsRegistration.aspx">
+							Management Majors Declaration</a>&nbsp;Online</td>
+					<td width="190"></td>
+				</tr>
+				<!--<TR>
+					<TD width="10"></TD>
+					<TD style="WIDTH: 596px"><p style="COLOR: red"><FONT color="#000000">::</FONT> <A href="/External/Student/MajorsRequest.aspx">
+								Management Majors Choosing</A>&nbsp;Closed</p>
+					</TD>
+					<TD width="190"></TD>
+				</TR>-->
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/ChooseAppliedArtsMajors.aspx">Applied 
+							Arts Majors Declaration</a></td>
+					<td width="190"></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/ChooseElectiveAppliedArts.aspx">Applied 
+							Arts Choose Elective Courses</a></td>
+					<td width="190"></td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/ChooseElectiveV2.aspx">Choose 
+							Elective Courses </a>
+					</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 596px">:: <a href="http://student.guc.edu.eg/External/Student/ExtraCourseReg.aspx">Placement 
+							Test Registration </a>
+					</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="COLOR: red; WIDTH: 596px" bordercolorlight="red">:: <a href="http://student.guc.edu.eg/External/Student/ChooseSeminar.aspx">
+							Choose Engineering Seminars</a>
+					</td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+	<tr>
+		<td style="HEIGHT: 25px">&nbsp;<a href="http://student.guc.edu.eg/External/Student/MakeupRegistration.aspx">Makeup 
+				Exam Registration</a><font color="#ff3333">(</font><font color="#ff0033">New)</font></td>
+	</tr>
+	<tr>
+		<td style="HEIGHT: 25px">&nbsp;<a href="http://student.guc.edu.eg/External/Student/Course/CourseRegistrationView.aspx">Course 
+				Registration</a><font color="#ff3333">(</font><font color="#ff0033">New)</font></td>
+	</tr>
+	<!--
+	<tr>
+		<td style="HEIGHT: 25px">&nbsp;<A href="/External/Student/ExamExcuse.aspx">Midterm 
+				Exams Excuses</A><FONT color="#ff3333"></FONT><FONT color="#ff0033">(New)</FONT></td>
+	</tr>
+	-->
+	<tr>
+		<td style="HEIGHT: 25px">&nbsp;<a href="http://student.guc.edu.eg/External/Student/ExamExcuseFinal.aspx">Final 
+				Exams Excuses</a><font color="#ff3333"></font><font color="#ff0033">(New)</font></td>
+	</tr>
+	<tr>
+		<td><b>:. Internship</b></td>
+	</tr>
+	<tr>
+		<td>
+			<table id="Table3" border="0" cellspacing="0" cellpadding="0">
+				<tbody><tr>
+					<td width="10"></td>
+					<td style="WIDTH: 100%" bordercolor="red">
+						<p style="COLOR: red"><a href="http://student.guc.edu.eg/External/Thesis/Internship.aspx">Internship Status</a>&nbsp;
+							<a href="http://student.guc.edu.eg/External/Thesis/Internship.aspx"></a>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td width="10"></td>
+					<td style="WIDTH: 100%" bordercolor="red">
+						<p style="COLOR: red"><a href="http://student.guc.edu.eg/External/Student/EMSSCADRegistration.aspx">Enrollment 
+								Form</a>&nbsp; Online
+						</p>
+					</td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+</tbody></table>
+</td>
+						<td valign="top" align="center">
+							<p>
+								<span id="stdNmLbl" style="font-family:Verdana;font-weight:bold;">16-4477 Ahmed Hisham Nasreldin Ismail</span></p>
+							<p class="MsoNormal"><span style="FONT-SIZE: x-small; FONT-WEIGHT: bold; mso-highlight: yellow">The 
+									students who will have their course(s) dropped due to absence, their seat(s) 
+									will be canceled after its announcement and they will not be eligible to enter 
+									the exam.</span></p>
+							
+									<table id="Table2" cellspacing="0" cellpadding="0" width="785" border="1" bordercolor="gainsboro">
+										<tbody><tr>
+											<td width="320"><b>Course Name - Season</b></td>
+											<td width="60"><b> Exam Day</b></td>
+											<td width="100"><b> Date</b></td>
+											<td width="70"><b> Start Time</b></td>
+											<td width="70"><b> End Time</b></td>
+											<td><b>Hall</b></td>
+											<td><b>Seat</b></td>
+											<td><b>Exam Type</b></td>
+										</tr>
+								
+									<tr>
+										<td>MET Digital Media Engineering 10th Semester - HUMA1001 Project Management  - Spring 2016 </td>
+										<td>Monday</td>
+										<td>7 - March - 2016</td>
+										<td>11:00:00 AM</td>
+										<td>1:00:00 PM</td>
+										<td>C7.02</td>
+										<td>I2</td>
+										<td>Normal</td>
+									</tr>
+								
+									<tr>
+										<td>MET Computer Science 10th Semester - CSEN1057 The Semantic IoT - Spring 2016 </td>
+										<td>Wednesday</td>
+										<td>9 - March - 2016</td>
+										<td>4:00:00 PM</td>
+										<td>6:00:00 PM</td>
+										<td>C7.02</td>
+										<td>A1</td>
+										<td>Normal</td>
+									</tr>
+								
+									<tr>
+										<td>MET Computer Science 10th Semester - DMET1001 Image Processing - Spring 2016 </td>
+										<td>Monday</td>
+										<td>14 - March - 2016</td>
+										<td>4:00:00 PM</td>
+										<td>6:00:00 PM</td>
+										<td>H14</td>
+										<td>A1</td>
+										<td>Normal</td>
+									</tr>
+								
+									<tr>
+										<td>MET Computer Science 10th Semester - CSEN1057 The Semantic IoT - Spring 2016 </td>
+										<td>Saturday</td>
+										<td>19 - March - 2016</td>
+										<td>8:30:00 AM</td>
+										<td>10:30:00 AM</td>
+										<td>Exam hall 4</td>
+										<td>A1</td>
+										<td>Normal</td>
+									</tr>
+								
+									<tr>
+										<td>MET Computer Science 10th Semester - DMET1001 Image Processing - Spring 2016 </td>
+										<td>Saturday</td>
+										<td>19 - March - 2016</td>
+										<td>4:00:00 PM</td>
+										<td>6:00:00 PM</td>
+										<td>B3.207</td>
+										<td>A1</td>
+										<td>Normal</td>
+									</tr>
+								
+									<tr>
+										<td>MET Digital Media Engineering 10th Semester - HUMA1001 Project Management  - Spring 2016 </td>
+										<td>Monday</td>
+										<td>21 - March - 2016</td>
+										<td>8:30:00 AM</td>
+										<td>10:30:00 AM</td>
+										<td>C7.01</td>
+										<td>D10</td>
+										<td>Normal</td>
+									</tr>
+								
+									<tr>
+										<td>Engineering 2nd Semester - MATH203 Mathematics I - Spring 2016 </td>
+										<td>Monday</td>
+										<td>4 - April - 2016</td>
+										<td>8:30:00 AM</td>
+										<td>10:30:00 AM</td>
+										<td>H4</td>
+										<td>B3</td>
+										<td>Normal</td>
+									</tr>
+								
+									<tr>
+										<td>Engineering 2nd Semester - MATH203 Mathematics I - Spring 2016 </td>
+										<td>Thursday</td>
+										<td>14 - April - 2016</td>
+										<td>4:00:00 PM</td>
+										<td>6:00:00 PM</td>
+										<td>H19</td>
+										<td>C4</td>
+										<td>Normal</td>
+									</tr>
+								
+			</tbody></table>
+			
+			<h4 align="left"><font color="#0000ff"> </font>
+			</h4>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			</td></tr>
+			<tr>
+				<td colspan="2">
+<table id="Table1" cellspacing="0" cellpadding="0" width="790" border="0">
+	<tbody><tr>
+		<td colspan="3" bgcolor="#666666"></td>
+	</tr>
+	<tr>
+		<td width="150"></td>
+		<td width="490" align="center">
+			<font face="Verdana" size="2"><b>GUC © 2003 - 2014</b></font>
+		</td>
+		<td width="150" align="center"><font face="Verdana" size="1">Proud to say<br>
+				"Made By GUC"</font></td>
+	</tr>
+</tbody></table>
+</td>
+			</tr>
+			</tbody></table></form>
+	
+
+</body></html>

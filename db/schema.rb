@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416202705) do
+ActiveRecord::Schema.define(version: 20160422152803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,31 @@ ActiveRecord::Schema.define(version: 20160416202705) do
 
   add_index "courses", ["name"], name: "index_courses_on_name", using: :btree
   add_index "courses", ["topic_id"], name: "index_courses_on_topic_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title",                   null: false
+    t.string   "description",             null: false
+    t.datetime "start_date",              null: false
+    t.datetime "end_date",                null: false
+    t.integer  "num_likes",   default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
+
+  create_table "exams", force: :cascade do |t|
+    t.integer  "course_id"
+    t.datetime "start_date", null: false
+    t.datetime "end_date",   null: false
+    t.string   "location",   null: false
+    t.string   "seat",       null: false
+    t.string   "exam_type",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "exams", ["course_id"], name: "index_exams_on_course_id", using: :btree
 
   create_table "gcm_organizer_ids", force: :cascade do |t|
     t.integer  "user_id"
@@ -113,6 +138,7 @@ ActiveRecord::Schema.define(version: 20160416202705) do
   add_index "verification_tokens", ["user_id", "token"], name: "index_verification_tokens_on_user_id_and_token", using: :btree
   add_index "verification_tokens", ["user_id"], name: "index_verification_tokens_on_user_id", using: :btree
 
+  add_foreign_key "exams", "courses", on_delete: :cascade
   add_foreign_key "gcm_organizer_ids", "users", on_delete: :cascade
   add_foreign_key "reset_tokens", "users", on_delete: :cascade
   add_foreign_key "schedule_slots", "courses", on_delete: :cascade
