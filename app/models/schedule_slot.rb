@@ -39,6 +39,21 @@ class ScheduleSlot < ActiveRecord::Base
       course: course.as_json })
   end
 
+  def save_or_fetch!
+    if valid?
+      record = find_by(slot_num: slot_num, day: day, name: :name,
+        course_id: course_id, lecture: lecture, lab: lab, tutorial: tutorial,
+        location: location, group: group
+        )
+      return record if record.present?
+      save!
+      return self
+    else
+      # Just let save raise the proper error
+      save!
+    end
+  end
+
   def gen_group_topic_id
     self.group_topic_id = "#{name}-#{group}".gsub(/[^a-zA-Z0-9\-_.]/, '')
   end

@@ -14,7 +14,7 @@ class Api::SchedulesController < ApplicationController
     info = StudentFetchedInfo.from_schedule_data(student_data)
     info.user = @current_user
     info.save!
-    slots.each(&:save!)
+    slots.map!(&:save_or_fetch!)
     StudentRegistration.recreate(slots, @current_user)
     render json: { slots: slots.as_json,
                    student_info: info.as_json

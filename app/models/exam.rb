@@ -23,4 +23,26 @@
 
 class Exam < ActiveRecord::Base
   belongs_to :course
+  belongs_to :user
+  validates :course, :start_date, :end_date, :location, :seat, :exam_type,
+    :user, presence: true
+
+  def self.fetch_from_guc(guc_username, guc_password)
+    html = fetch_exams(guc_username, guc_password)
+    html = parse_html(html)
+  end
+
+  def self.parse_html(html)
+    Nokogiri::HTML(html)
+  end
+
+  def self.fetch_exams(guc_username, guc_password)
+    url = "http://#{guc_username.strip}:#{guc_password.strip}@student.guc.edu.eg/External/Student/ViewStudentSeat/ViewExamSeat.aspx"
+    io = IO.popen "curl -s --ntlm #{url}"
+    lines = io.readlines
+    io.close
+    raise GUCServerError unless $?.exitstatus == 0
+    lines.join '\n'
+  end
+
 end

@@ -12,5 +12,6 @@ Rails.application.routes.draw do
       end
       resources :subscriptions, only: [:create, :index, :destroy]
     end
+    resources :event_invitations, only: [:create, :index, :destroy, :show]
   end
 end

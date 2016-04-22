@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422152803) do
+ActiveRecord::Schema.define(version: 20160422171209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,14 +26,35 @@ ActiveRecord::Schema.define(version: 20160422152803) do
   add_index "courses", ["name"], name: "index_courses_on_name", using: :btree
   add_index "courses", ["topic_id"], name: "index_courses_on_topic_id", using: :btree
 
+  create_table "event_invitations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_invitations", ["event_id"], name: "index_event_invitations_on_event_id", using: :btree
+  add_index "event_invitations", ["user_id"], name: "index_event_invitations_on_user_id", using: :btree
+
+  create_table "event_subscriptions", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_subscriptions", ["event_id"], name: "index_event_subscriptions_on_event_id", using: :btree
+  add_index "event_subscriptions", ["user_id"], name: "index_event_subscriptions_on_user_id", using: :btree
+
   create_table "events", force: :cascade do |t|
-    t.string   "title",                   null: false
-    t.string   "description",             null: false
-    t.datetime "start_date",              null: false
-    t.datetime "end_date",                null: false
-    t.integer  "num_likes",   default: 0, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "title",                       null: false
+    t.string   "description",                 null: false
+    t.datetime "start_date",                  null: false
+    t.datetime "end_date",                    null: false
+    t.integer  "num_likes",   default: 0,     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "private",     default: false, null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
@@ -138,6 +159,10 @@ ActiveRecord::Schema.define(version: 20160422152803) do
   add_index "verification_tokens", ["user_id", "token"], name: "index_verification_tokens_on_user_id_and_token", using: :btree
   add_index "verification_tokens", ["user_id"], name: "index_verification_tokens_on_user_id", using: :btree
 
+  add_foreign_key "event_invitations", "events", on_delete: :cascade
+  add_foreign_key "event_invitations", "users", on_delete: :cascade
+  add_foreign_key "event_subscriptions", "events", on_delete: :cascade
+  add_foreign_key "event_subscriptions", "users", on_delete: :cascade
   add_foreign_key "exams", "courses", on_delete: :cascade
   add_foreign_key "gcm_organizer_ids", "users", on_delete: :cascade
   add_foreign_key "reset_tokens", "users", on_delete: :cascade
