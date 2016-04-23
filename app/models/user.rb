@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   scope :teachers, -> { where student: false }
   scope :admins, -> { where super_user: true }
   has_many :student_registrations, dependent: :destroy
-  has_many :slots, through: :student_registration
+  has_many :schedule_slots, through: :student_registrations
 
   def teacher?
     !student?

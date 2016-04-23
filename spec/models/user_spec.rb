@@ -19,6 +19,8 @@ RSpec.describe User, type: :model do
   it { should have_secure_password }
   it { should have_many :reset_tokens }
   it { should have_many :verification_tokens }
+  it { should have_many(:schedule_slots).through(:student_registrations) }
+  it { should have_many :student_registrations }
   it { should validate_presence_of :email }
   it { should validate_presence_of :name }
 
