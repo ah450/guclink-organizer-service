@@ -3,3 +3,4 @@
 
 :queues:
     - organizer_notifications
+    - organizer_maintenence
