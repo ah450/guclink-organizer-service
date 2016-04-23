@@ -24,13 +24,24 @@ class StudentRegistration < ActiveRecord::Base
   belongs_to :schedule_slot
   validate :user_student
   validates :user, :schedule_slot, presence: true
+  validates :user_id, uniqueness: { scope: :schedule_slot_id }
+  after_destroy :destroy_slot
 
   def self.recreate(slots, user)
-    StudentRegistration.where(user: user).delete_all
-    slots.each { |s| StudentRegistration.create(schedule_slot: s, user: user) }
+    StudentRegistration.where(user: user).destroy_all
+    slots.map { |s| StudentRegistration.create(schedule_slot: s, user: user) }
   end
 
   def user_student
     errors.add(:user, 'must be student') unless user.present? && user.student?
+  end
+
+  private
+  
+  # Destroy slot if no more registrations
+  def destroy_slot
+    if schedule_slot.present? && schedule_slot.student_registrations.count == 0
+      schedule_slot.destroy
+    end
   end
 end

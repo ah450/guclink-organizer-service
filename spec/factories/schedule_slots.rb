@@ -1,3 +1,4 @@
+require 'securerandom'
 FactoryGirl.define do
   factory :schedule_slot do
     course
@@ -8,7 +9,7 @@ FactoryGirl.define do
     lecture true
     lab false
     group "L1"
-    name "CSEN 403"
+    name { SecureRandom.hex }
     factory :tutorial do
       lecture false
       tutorial true
