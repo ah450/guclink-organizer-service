@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :course do
-    name { Faker::Hacker.adjective }
+    sequence(:name, 'a')
   end
 end
