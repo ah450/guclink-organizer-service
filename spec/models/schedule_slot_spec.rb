@@ -6,6 +6,8 @@ RSpec.describe ScheduleSlot, type: :model do
   it { should validate_presence_of :slot_num }
   it { should validate_presence_of :day }
   it { should validate_presence_of :name }
+  it { should have_many :student_registrations }
+  it { should have_many :students }
 
   context '.fetch_from_guc' do
     class ScheduleSlot
@@ -54,4 +56,5 @@ RSpec.describe ScheduleSlot, type: :model do
       expect(tuesday_iot_lab.present?).to be true
     end
   end
+
 end

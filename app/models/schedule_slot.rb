@@ -34,6 +34,7 @@ class ScheduleSlot < ActiveRecord::Base
   validates :tutorial, :lecture, :lab, inclusion: [true, false]
   before_save :gen_group_topic_id, :gen_topic_id
   has_many :student_registrations, dependent: :destroy
+  has_many :students, through: :student_registrations, source: :user
   after_destroy :notify_deletion
 
   def as_json(_options={})
@@ -41,9 +42,6 @@ class ScheduleSlot < ActiveRecord::Base
       course: course.as_json })
   end
 
-  def self.clear_by_user(user)
-    user.schedule_slots.destroy_all
-  end
 
   def save_or_fetch
     if valid?
