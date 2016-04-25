@@ -26,6 +26,10 @@ class Api::SchedulesController < ApplicationController
 
   protected
 
+  def base_index_query
+    @current_user.schedule_slots
+  end
+
   def resource_name
     'schedule_slot'
   end
