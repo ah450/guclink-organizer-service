@@ -1,7 +1,7 @@
 class Api::SchedulesController < ApplicationController
-  prepend_before_filter :authorize_student, only: [:create]
-  prepend_before_filter :authorize, only: [:create]
-  prepend_before_filter :authenticate, only: [:create]
+  prepend_before_filter :authorize_student
+  prepend_before_filter :authorize
+  prepend_before_filter :authenticate
   rescue_from GUCServerError, with: :guc_server_error
   around_filter :wrap_in_transaction, only: [:create]
   after_filter :perform_cleanup, only: [:create]
