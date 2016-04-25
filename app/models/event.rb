@@ -18,4 +18,18 @@
 #
 
 class Event < ActiveRecord::Base
+  validates :title, :description, :start_date, :end_date, presence: true
+  validates :private, inclusion: [true, false]
+
+  def like
+    Event.increment_counter(:num_likes, id)
+  end
+  def unlike
+    ActiveRecord::Base.connection.execute(<<-ESQL)
+      UPDATE events
+      SET num_likes = num_likes - 1
+      WHERE id = #{id}
+      AND num_likes >= 1
+    ESQL
+  end
 end
