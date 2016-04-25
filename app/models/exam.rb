@@ -11,13 +11,16 @@
 #  exam_type  :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
 #
 # Indexes
 #
 #  index_exams_on_course_id  (course_id)
+#  index_exams_on_user_id    (user_id)
 #
 # Foreign Keys
 #
+#  fk_rails_1ef6db8efd  (user_id => users.id)
 #  fk_rails_66aea76c6a  (course_id => courses.id)
 #
 
