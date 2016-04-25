@@ -34,7 +34,7 @@ end
 module RequestSpec
   module HeaderHelpers
     def get_token(token)
-      {'AUTHORIZATION': "Bearer #{token}"}
+      {'Authorization': "Bearer #{token}"}
     end
   end
 end
@@ -76,5 +76,8 @@ RSpec.configure do |config|
   RSpec.configure do |config|
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
+  end
+  config.after(:each) do
+    $redis.flushall
   end
 end

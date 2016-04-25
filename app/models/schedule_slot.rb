@@ -45,19 +45,15 @@ class ScheduleSlot < ActiveRecord::Base
 
   def save_or_fetch
     if valid?
-      record = find_by(slot_num: slot_num, day: day, name: :name,
+      record = ScheduleSlot.find_by(slot_num: slot_num, day: day, name: name,
         course_id: course_id, lecture: lecture, lab: lab, tutorial: tutorial,
-        location: location, group: group
-        )
+        location: location, group: group)
       return record if record.present?
       save!
       return self
     else
-      # Just let save raise the proper error
-      save!
+      nil
     end
-  rescue
-    nil
   end
 
   def gen_group_topic_id

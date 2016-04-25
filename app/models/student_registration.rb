@@ -28,8 +28,8 @@ class StudentRegistration < ActiveRecord::Base
   after_destroy :destroy_slot
 
   def self.recreate(slots, user)
-    StudentRegistration.where(user: user).destroy_all
-    slots.map { |s| StudentRegistration.create(schedule_slot: s, user: user) }
+    StudentRegistration.where(user: user).where.not(schedule_slot: slots).destroy_all
+    slots.map { |s| StudentRegistration.find_or_create(schedule_slot: s, user: user) }
   end
 
   def user_student

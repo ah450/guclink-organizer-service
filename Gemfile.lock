@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/ah450/cacheable.git
-  revision: 67d7565d3adf6dd6b4588e4123d4a51a1e46596e
+  revision: 6471aeeed193eff1827264368250e7de7d67dad7
   specs:
-    cacheable (0.0.3)
+    cacheable (0.0.4)
       rails (~> 4.2.6)
       redis
       redis-namespace
@@ -176,7 +176,7 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-erd (1.4.6)
+    rails-erd (1.4.7)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
       choice (~> 0.2.0)
@@ -191,7 +191,7 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
-    redis (3.2.2)
+    redis (3.3.0)
     redis-actionpack (4.0.1)
       actionpack (~> 4)
       redis-rack (~> 1.5.0)
@@ -251,7 +251,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.9.0)
+    sshkit (1.10.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     thin (1.6.4)

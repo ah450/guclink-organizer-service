@@ -5,7 +5,7 @@ RSpec.describe PostScheduleCleanupJob, type: :job do
   it 'Recreates student registration' do
     slots = FactoryGirl.create_list(:schedule_slot, 3)
     expect{
-        PostScheduleCleanupJob.perform_now(slots, user)
+        PostScheduleCleanupJob.perform_later(slots, user)
       }.to change(StudentRegistration, :count).by(3).and change(ScheduleSlot, :count).by(0)
   end
 
@@ -13,7 +13,7 @@ RSpec.describe PostScheduleCleanupJob, type: :job do
     old_slots = FactoryGirl.create_list(:student_registration, 2, user: user).map(&:schedule_slot)
     new_slots = FactoryGirl.create_list(:schedule_slot, 3)
     expect{
-      PostScheduleCleanupJob.perform_now(new_slots, user)
+      PostScheduleCleanupJob.perform_later(new_slots, user)
     }.to change(StudentRegistration, :count).by(1).and change(ScheduleSlot, :count).by(-2)
     expect(StudentRegistration.count).to eql 3
     expect(ScheduleSlot.count).to eql 3
@@ -27,7 +27,7 @@ RSpec.describe PostScheduleCleanupJob, type: :job do
     old_slots = FactoryGirl.create_list(:student_registration, 2, user: user).map(&:schedule_slot)
     new_slots = FactoryGirl.create_list(:schedule_slot, 8)
     expect{
-      PostScheduleCleanupJob.perform_now(new_slots, user)
+      PostScheduleCleanupJob.perform_later(new_slots, user)
     }.to change(StudentRegistration, :count).by(6).and change(ScheduleSlot, :count).by(-4)
     expect(StudentRegistration.count).to eql 8
     expect(ScheduleSlot.count).to eql 8
