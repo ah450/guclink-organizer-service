@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :schedules, only: [:create, :index]
     resources :exams, only: [:create, :index]
     resources :courses, only: [:index, :show]
-    resources :events, only: [:create, :index, :show] do
+    resources :events, only: [:create, :index, :show, :destroy] do
       member do
         put :like
         put :unlike
