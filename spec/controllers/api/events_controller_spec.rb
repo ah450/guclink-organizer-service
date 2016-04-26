@@ -6,7 +6,7 @@ RSpec.describe Api::EventsController, type: :controller do
     let(:invited) { FactoryGirl.create(:student) }
     let(:subscribed) { FactoryGirl.create(:student) }
     let(:neutral) { FactoryGirl.create(:student) }
-    let(:events) { FactoryGirl.create_list(:event, 4, owner: owner) }
+    let(:events) { FactoryGirl.create_list(:event, 4, owner: owner, private: true) }
     let(:invitations) do
       events.each { |e| FactoryGirl.create(:event_invitation, event: e, user: invited) }
     end
@@ -19,6 +19,51 @@ RSpec.describe Api::EventsController, type: :controller do
       get :index, format: :json
       expect(response).to be_unauthorized
     end
+
+    it 'returns no events if there are no subscriptions' do
+      invitations
+      subscriptions
+      set_token neutral.token
+      get :index, format: :json
+      expect(response).to be_success
+      expect(json_response[:events].size).to eql 0
+    end
+
+    it 'returns no events if there are only invitations' do
+      invitations
+      subscriptions
+      set_token invited.token
+      get :index, format: :json
+      expect(response).to be_success
+      expect(json_response[:events].size).to eql 0
+    end
+
+    it 'returns events that you are an owner of' do
+      invitations
+      subscriptions
+      set_token owner.token
+      get :index, format: :json
+      expect(json_response[:events].size).to eql events.size
+    end
+
+    it 'returns events that you are subscribed to' do
+      invitations
+      subscriptions
+      set_token subscribed.token
+      get :index, format: :json
+      expect(json_response[:events].size).to eql events.size
+    end
+
+    it 'queries by created_at' do
+      invitations
+      subscriptions
+      set_token subscribed.token
+      created_at = events[-2].created_at
+      get :index, format: :json, created_at: created_at
+      expect(json_response[:events].size).to eql 2
+      expect(json_response[:events].map { |e| e[:id]}).to eql events[-2..-1].map(&:id).reverse
+    end
+
   end
   context 'create' do
     let(:student) { FactoryGirl.create(:student) }

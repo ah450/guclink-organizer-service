@@ -28,15 +28,14 @@ class Api::EventsController < ApplicationController
   # Owned by the current user
   # Or subscribed to by the current user
   def base_index_query
-    Event.find_by_sql([
-      "SELECT * FROM events " +
-      "WHERE user_id = ? " +
+    Event.where(
+      "user_id = ? " +
       "OR private = false " +
       "OR EXISTS (SELECT 1 FROM event_subscriptions " +
       "WHERE event_subscriptions.user_id = ? " +
       "AND event_subscriptions.event_id = events.id)",
       @current_user.id, @current_user.id
-      ])
+      )
   end
 
   def event_params
