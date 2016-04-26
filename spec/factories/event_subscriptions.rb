@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :event_subscription do
-    event nil
-    user nil
+    event
+    user factory: :student
   end
 end
