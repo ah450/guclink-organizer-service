@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   has_many :student_registrations, dependent: :destroy
   has_many :schedule_slots, through: :student_registrations
   has_many :exams
+  has_many :event_invitations, dependent: :destroy
+  has_many :event_subscriptions, dependent: :destroy
 
   def teacher?
     !student?

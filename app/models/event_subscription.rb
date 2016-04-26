@@ -10,8 +10,7 @@
 #
 # Indexes
 #
-#  index_event_subscriptions_on_event_id  (event_id)
-#  index_event_subscriptions_on_user_id   (user_id)
+#  index_event_subscriptions_on_user_id_and_event_id  (user_id,event_id)
 #
 # Foreign Keys
 #
@@ -22,4 +21,6 @@
 class EventSubscription < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
+  validates :event, :user, presence: true
+  validates :event_id, uniqueness: {scope: :user_id}
 end

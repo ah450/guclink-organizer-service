@@ -22,4 +22,6 @@
 class EventInvitation < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
+  validates :event, :user, presence: true
+  validates :event_id, uniqueness: {scope: :user_id}
 end

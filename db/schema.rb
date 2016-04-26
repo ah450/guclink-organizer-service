@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425105144) do
+ActiveRecord::Schema.define(version: 20160425205628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,7 @@ ActiveRecord::Schema.define(version: 20160425105144) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "event_subscriptions", ["event_id"], name: "index_event_subscriptions_on_event_id", using: :btree
-  add_index "event_subscriptions", ["user_id"], name: "index_event_subscriptions_on_user_id", using: :btree
+  add_index "event_subscriptions", ["user_id", "event_id"], name: "index_event_subscriptions_on_user_id_and_event_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title",                       null: false
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160425105144) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "private",     default: false, null: false
+    t.integer  "user_id"
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 20160425105144) do
   add_foreign_key "event_invitations", "users", on_delete: :cascade
   add_foreign_key "event_subscriptions", "events", on_delete: :cascade
   add_foreign_key "event_subscriptions", "users", on_delete: :cascade
+  add_foreign_key "events", "users", on_delete: :cascade
   add_foreign_key "exams", "courses", on_delete: :cascade
   add_foreign_key "exams", "users"
   add_foreign_key "gcm_organizer_ids", "users", on_delete: :cascade
