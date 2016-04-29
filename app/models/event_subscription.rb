@@ -23,4 +23,9 @@ class EventSubscription < ActiveRecord::Base
   belongs_to :user
   validates :event, :user, presence: true
   validates :event_id, uniqueness: {scope: :user_id}
+
+
+  def self.from_invitation(invitation)
+    new event: invitation.event, user: invitation.user
+  end
 end

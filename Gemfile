@@ -36,6 +36,7 @@ end
 group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'shoulda-matchers'
+  gem 'test_after_commit'
 end
 
 group :development do

@@ -254,6 +254,8 @@ GEM
     sshkit (1.10.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    test_after_commit (1.0.0)
+      activerecord (>= 3.2)
     thin (1.6.4)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -306,6 +308,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq
   spring
+  test_after_commit
   thin
   web-console (~> 2.0)
 

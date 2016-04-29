@@ -7,6 +7,7 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  rejected   :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -24,4 +25,36 @@ class EventInvitation < ActiveRecord::Base
   belongs_to :user
   validates :event, :user, presence: true
   validates :event_id, uniqueness: {scope: :user_id}
+  validates :rejected, inclusion: [true, false]
+  validate :invited_not_owner
+  validate :not_accepted
+  after_commit :notify_invited, on: [:create]
+
+  def accept!
+    EventSubscription.from_invitation(self).save!
+  end
+
+  def reject!
+    self.rejected = true
+    save!
+  end
+
+  private
+
+  def invited_not_owner
+    if event.present? && user.present?
+      errors.add(:user, 'must not be owner') if user == event.owner
+    end
+  end
+
+  def not_accepted
+    if event.present? && user.present?
+      erros.add(:user, 'already accepted') if EventSubscription.exists?(event: event, user: user)
+    end
+  end
+
+  def notify_invited
+    EventInvitationNotificationJob.perform_later(self)
+  end
+  
 end
