@@ -10,8 +10,9 @@ Rails.application.routes.draw do
         put :like
         put :unlike
       end
-      resources :subscriptions, only: [:index, :destroy]
     end
+    resources :subscriptions, only: [:index, :destroy]
+
     resources :event_invitations, only: [:create, :index, :destroy, :show] do
       member do
         put :reject
