@@ -23,6 +23,7 @@ gem 'nokogiri'
 gem 'cacheable', git: 'git://github.com/ah450/cacheable.git'
 gem 'jwt_authenticatable', git: 'git://github.com/ah450/jwt_authenticatable.git'
 gem 'guclink_controller_concerns', git: 'git://github.com/ah450/guclink_controller_concerns.git'
+gem 'em-http-request'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
