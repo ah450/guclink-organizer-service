@@ -17,6 +17,7 @@
 class Course < ActiveRecord::Base
   validates :name, presence: true
   validates :name, uniqueness: true
+  has_many :schedule_slots, dependent: :destroy
   before_save :gen_topic_id
 
   def gen_topic_id
