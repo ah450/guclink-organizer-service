@@ -49,7 +49,7 @@ class EventInvitation < ActiveRecord::Base
 
   def not_accepted
     if event.present? && user.present?
-      erros.add(:user, 'already accepted') if EventSubscription.exists?(event: event, user: user)
+      errors.add(:user, 'already accepted') if EventSubscription.exists?(event: event, user: user)
     end
   end
 
