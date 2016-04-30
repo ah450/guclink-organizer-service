@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ah450/cacheable.git
-  revision: 6471aeeed193eff1827264368250e7de7d67dad7
+  revision: 4f24614d23318918b39ac8134282d04f144718ee
   specs:
     cacheable (0.0.4)
       rails (~> 4.2.6)
@@ -65,6 +65,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    airbrussh (1.0.1)
+      sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.7.0)
       activerecord (>= 3.2, < 6.0)
       rake (~> 10.4)
@@ -73,14 +75,17 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (8.2.4)
-    capistrano (3.4.1)
+    byebug (8.2.5)
+    capistrano (3.5.0)
+      airbrussh (>= 1.0.0)
+      capistrano-harrow
       i18n
       rake (>= 10.0.0)
-      sshkit (~> 1.3)
+      sshkit (>= 1.9.0)
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-harrow (0.4.0)
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
