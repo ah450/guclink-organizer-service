@@ -80,7 +80,7 @@ class Exam < ActiveRecord::Base
 
   def self.fetch_exams(guc_username, guc_password)
     url = "http://#{guc_username.strip}:#{guc_password.strip}@student.guc.edu.eg/External/Student/ViewStudentSeat/ViewExamSeat.aspx"
-    io = IO.popen "curl -s --ntlm #{url}"
+    io = IO.popen ['curl', '-s', '--ntlm', url.shellescape]
     lines = io.readlines
     io.close
     raise GUCServerError unless $?.exitstatus == 0

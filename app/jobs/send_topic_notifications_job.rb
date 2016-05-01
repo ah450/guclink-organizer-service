@@ -23,8 +23,9 @@ class SendTopicNotificationsJob < ActiveJob::Base
       data: notification.as_json
     }
     EventMachine::HttpRequest.new(DOWNSTREAM_URL,
-      connect_timeout: 120).post header: request_data,
-      body: request_data.to_json
+      connect_timeout: Rails.application.config.gcm_timout_seconds
+      ).post header: request_data,
+             body: request_data.to_json
   end
 
 end

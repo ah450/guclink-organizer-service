@@ -153,7 +153,7 @@ class ScheduleSlot < ActiveRecord::Base
 
   def self.fetch_schedule(guc_username, guc_password)
     url = "http://#{guc_username.strip}:#{guc_password.strip}@student.guc.edu.eg/Web/Student/Schedule/GroupSchedule.aspx"
-    io = IO.popen "curl -s --ntlm #{url}"
+    io = IO.popen ['curl', '-s', '--ntlm', url.shellescape]
     lines = io.readlines
     io.close
     raise GUCServerError unless $?.exitstatus == 0
