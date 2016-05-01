@@ -30,6 +30,13 @@ class EventInvitation < ActiveRecord::Base
   validate :not_accepted
   after_commit :notify_invited, on: [:create]
 
+  def as_json(_options = {})
+    super.merge({
+      user: user.as_json,
+      event: event.as_json
+      })
+  end
+
   def accept!
     EventSubscription.from_invitation(self).save!
   end
