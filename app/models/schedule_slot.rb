@@ -61,7 +61,7 @@ class ScheduleSlot < ActiveRecord::Base
   end
 
   def gen_topic_id
-    topic = group_topic_id
+    topic = group_topic_id + location
     topic += '-lab' if lab?
     topic += '-tut' if tutorial?
     topic += '-lecture' if lecture?

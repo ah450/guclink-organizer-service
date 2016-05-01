@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501144928) do
+ActiveRecord::Schema.define(version: 20160501163418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20160501144928) do
     t.datetime "updated_at",                  null: false
     t.boolean  "private",     default: false, null: false
     t.integer  "user_id"
+    t.string   "topic_id",                    null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
@@ -85,15 +86,16 @@ ActiveRecord::Schema.define(version: 20160501144928) do
   add_index "gcm_organizer_ids", ["user_id"], name: "index_gcm_organizer_ids_on_user_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
-    t.string   "type",                     null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "type",        default: "Notification", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "topic"
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.json     "data",        default: {}, null: false
+    t.json     "data",        default: {},             null: false
   end
 
+  add_index "notifications", ["created_at"], name: "index_notifications_on_created_at", using: :btree
   add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
   add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
   add_index "notifications", ["topic"], name: "index_notifications_on_topic", where: "(topic IS NOT NULL)", using: :btree

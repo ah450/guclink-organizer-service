@@ -83,4 +83,11 @@ class User < ActiveRecord::Base
   def email_not_changed
     errors.add(:email, 'can not be changed') if email_changed? && persisted?
   end
+
+  def get_subscribed_topic_ids
+   events = Event.owned_or_subscribed_by.map(&:topic_id)
+   slots = schedule_slots.pluck(&:topic_id) + schedule_slots.pluck(&:group_topic_id)
+   courses = schedule_slots.map(&:course).map(&:topic_id)
+   events + slots + courses
+  end
 end

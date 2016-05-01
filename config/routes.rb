@@ -21,12 +21,11 @@ Rails.application.routes.draw do
     end
     
     resources :notifications, only: [:create] do
-      member do
+      collection do
         get :sent
         get :received
       end
     end
-
     resources :gcm_ids, only: [:create]
   end
 end

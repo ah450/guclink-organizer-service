@@ -3,7 +3,7 @@
 # Table name: notifications
 #
 #  id          :integer          not null, primary key
-#  type        :string           not null
+#  type        :string           default("Notification"), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  topic       :string
@@ -13,6 +13,7 @@
 #
 # Indexes
 #
+#  index_notifications_on_created_at   (created_at)
 #  index_notifications_on_receiver_id  (receiver_id)
 #  index_notifications_on_sender_id    (sender_id)
 #  index_notifications_on_topic        (topic)

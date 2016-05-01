@@ -12,6 +12,7 @@
 #  updated_at  :datetime         not null
 #  private     :boolean          default(FALSE), not null
 #  user_id     :integer
+#  topic_id    :string           not null
 #
 # Indexes
 #
@@ -30,6 +31,11 @@ class Event < ActiveRecord::Base
   has_many :event_subscriptions, dependent: :destroy
   has_many :event_invitations, dependent: :destroy
   include Cacheable
+  before_save :gen_topic_id
+
+  def gen_topic_id
+    self.topic_id = "event_#{id}"
+  end
 
   def like
     Event.increment_counter(:num_likes, id)
@@ -49,5 +55,15 @@ class Event < ActiveRecord::Base
 
   def member?(user)
     !private? || EventSubscription.exists?(event: self, user: user)
+  end
+
+  def self.owned_or_subscribed_by(user)
+    Event.where(
+          "user_id = ? " +
+          "OR EXISTS (SELECT 1 FROM event_subscriptions " +
+          "WHERE event_subscriptions.user_id = ? " +
+          "AND event_subscriptions.event_id = events.id)",
+          user.id, user.id
+          )
   end
 end
