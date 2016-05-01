@@ -26,6 +26,9 @@ RSpec.describe User, type: :model do
   it { should have_many :event_subscriptions }
   it { should validate_presence_of :email }
   it { should validate_presence_of :name }
+  it { should have_one :gcm_organizer_id }
+  it { should have_many :received_notifications }
+  it { should have_many :sent_notifications }
 
   it 'has a valid student factory' do
     expect(FactoryGirl.build(:student)).to be_valid

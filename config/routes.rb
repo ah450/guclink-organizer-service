@@ -19,5 +19,14 @@ Rails.application.routes.draw do
         put :accept
       end
     end
+    
+    resources :notifications, only: [:create] do
+      member do
+        get :sent
+        get :received
+      end
+    end
+
+    resources :gcm_ids, only: [:create]
   end
 end

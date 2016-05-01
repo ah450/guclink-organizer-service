@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426082142) do
+ActiveRecord::Schema.define(version: 20160501114012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,21 @@ ActiveRecord::Schema.define(version: 20160426082142) do
 
   add_index "gcm_organizer_ids", ["user_id"], name: "index_gcm_organizer_ids_on_user_id", using: :btree
 
+  create_table "notifications", force: :cascade do |t|
+    t.string   "type",        null: false
+    t.string   "title",       null: false
+    t.string   "description", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "topic"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+  end
+
+  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
+  add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
+  add_index "notifications", ["type"], name: "index_notifications_on_type", using: :btree
+
   create_table "reset_tokens", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "token",      null: false
@@ -139,12 +154,14 @@ ActiveRecord::Schema.define(version: 20160426082142) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "password_digest",                 null: false
-    t.boolean  "student",                         null: false
-    t.boolean  "verified",        default: false, null: false
-    t.boolean  "super_user",      default: false, null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "password_digest",                              null: false
+    t.boolean  "student",                                      null: false
+    t.boolean  "verified",                     default: false, null: false
+    t.boolean  "super_user",                   default: false, null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "received_notifications_count", default: 0,     null: false
+    t.integer  "sent_notifications_count",     default: 0,     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
@@ -170,6 +187,8 @@ ActiveRecord::Schema.define(version: 20160426082142) do
   add_foreign_key "exams", "courses", on_delete: :cascade
   add_foreign_key "exams", "users"
   add_foreign_key "gcm_organizer_ids", "users", on_delete: :cascade
+  add_foreign_key "notifications", "users", column: "receiver_id", on_delete: :nullify
+  add_foreign_key "notifications", "users", column: "sender_id", on_delete: :nullify
   add_foreign_key "reset_tokens", "users", on_delete: :cascade
   add_foreign_key "schedule_slots", "courses", on_delete: :cascade
   add_foreign_key "student_fetched_infos", "users", on_delete: :cascade

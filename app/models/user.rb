@@ -2,15 +2,17 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string
-#  email           :string
-#  password_digest :string           not null
-#  student         :boolean          not null
-#  verified        :boolean          default(FALSE), not null
-#  super_user      :boolean          default(FALSE), not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                           :integer          not null, primary key
+#  name                         :string
+#  email                        :string
+#  password_digest              :string           not null
+#  student                      :boolean          not null
+#  verified                     :boolean          default(FALSE), not null
+#  super_user                   :boolean          default(FALSE), not null
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#  received_notifications_count :integer          default(0), not null
+#  sent_notifications_count     :integer          default(0), not null
 #
 # Indexes
 #
@@ -46,6 +48,11 @@ class User < ActiveRecord::Base
   has_many :exams
   has_many :event_invitations, dependent: :destroy
   has_many :event_subscriptions, dependent: :destroy
+  has_many :received_notifications, class_name: 'Notification',
+    foreign_key: :receiver_id
+  has_many :sent_notifications, class_name: 'Notification',
+    foreign_key: :sender_id
+  has_one :gcm_organizer_id
 
   def teacher?
     !student?
