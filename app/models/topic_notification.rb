@@ -27,9 +27,6 @@
 class TopicNotification < Notification
   validates :topic, presence: true
 
-  protected
-
-  def send
-    SendTopicNotificationsJob.perform_later(self)
+  def send_notification
   end
 end

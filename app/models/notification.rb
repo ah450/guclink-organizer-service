@@ -29,11 +29,9 @@ class Notification < ActiveRecord::Base
     counter_cache: :sent_notifications_count
   belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id,
     counter_cache: :received_notifications_count
-  after_commit :send, on: [:create]
-
-  protected
+  after_commit :send_notification, on: [:create]
   
-  def send
+  def send_notification
     if receiver.present?
       SendUsersNotificationJob.perform_later([receiver], self)
     else
@@ -41,4 +39,5 @@ class Notification < ActiveRecord::Base
       SendUsersNotificationJob.perform_later(User.all, self)
     end
   end
+
 end
