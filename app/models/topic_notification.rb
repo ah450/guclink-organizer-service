@@ -4,18 +4,18 @@
 #
 #  id          :integer          not null, primary key
 #  type        :string           not null
-#  title       :string           not null
-#  description :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  topic       :string
 #  sender_id   :integer
 #  receiver_id :integer
+#  data        :json             default({}), not null
 #
 # Indexes
 #
 #  index_notifications_on_receiver_id  (receiver_id)
 #  index_notifications_on_sender_id    (sender_id)
+#  index_notifications_on_topic        (topic)
 #  index_notifications_on_type         (type)
 #
 # Foreign Keys
@@ -26,4 +26,10 @@
 
 class TopicNotification < Notification
   validates :topic, presence: true
+
+  protected
+
+  def send
+    SendTopicNotificationsJob.perform_later(self)
+  end
 end
