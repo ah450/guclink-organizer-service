@@ -38,7 +38,7 @@ set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
 set :sidekiq_log, "#{current_path}/log/sidekiq.log"
 set :sidekiq_pid, "#{current_path}/sidekiq.pid"
 set :thin_config_path, "#{current_path}/config/thin.yml"
-
+set :sidekiq_processes, 3
 namespace :deploy do
 
   after :restart, :clear_cache do
